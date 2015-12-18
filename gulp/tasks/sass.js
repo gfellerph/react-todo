@@ -3,6 +3,7 @@ var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var watch        = require('gulp-watch');
 var autoprefixer = require('gulp-autoprefixer');
+var browserSync  = require('browser-sync');
 var options      = require('../options').sass;
 var handleErrors = require('../utils/handleErrors');
 var kickstarter  = require('../utils/kickstarter');
@@ -19,7 +20,8 @@ var compileSass = function () {
 		.pipe(sass(passedOpt.sass).on('error', handleErrors))
 		.pipe(autoprefixer(passedOpt.autoprefixer))
 		.pipe(sourcemaps.write('/', passedOpt.sourcemaps))
-		.pipe(gulp.dest(options.dest));
+		.pipe(gulp.dest(options.dest))
+		.pipe(browserSync.reload({stream: true}));
 }
 
 /**

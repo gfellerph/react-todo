@@ -91,7 +91,7 @@ var options = {
 	webpack: {
 
 		// Define where your javascript source files lie
-		src: source + '/js/**/*.jsx',
+		src: source + '/js/**/*.{jsx,js}',
 
 		// Define entry points for your scripts.
 		// Use paths starting with './' (this folder)
@@ -102,7 +102,7 @@ var options = {
 
 		// Set resolve paths
 		resolve: {
-			extensions: ['', '.js'],
+			extensions: ['', '.js', '.jsx'],
 			root: path.resolve('./src/js')
 		},
 
@@ -111,7 +111,10 @@ var options = {
 				{
 					test: /\.jsx?$/,
 					exclude: /(node_modules)/,
-					loader: 'babel'
+					loader: 'babel',
+					query: {
+						presets: ['react']
+					}
 				}
 			]
 		},
