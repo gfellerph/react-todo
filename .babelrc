@@ -1,0 +1,19 @@
+{
+  "env": {
+    "development": {
+      "plugins": [
+        "react-transform"
+      ],
+      "presets": ["es2015", "react"],
+      "extra": {
+        "react-transform": {
+          "transforms": [{
+            "transform": "react-transform-hmr",
+            "imports": ["react"],
+            "locals": ["module"]
+          }]
+        }
+      }
+    }
+  }
+}
